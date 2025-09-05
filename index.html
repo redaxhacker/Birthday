@@ -303,7 +303,8 @@
 <body>
   <div class="stars"></div>
   <canvas id="matrix"></canvas>
-  <audio id="birthdayMusic" src="birthdaysong.mp3" autoplay hidden></audio>
+  <audio id="birthdayMusic" src="birthdaysong.mp3" preload="auto"></audio>
+
 
   
   <div id="countdown" class="countdown-container"></div>
@@ -324,7 +325,18 @@
   
   <script>
     // Play music
-    document.getElementById("birthdayMusic").play();
+    const audio = document.getElementById("birthdayMusic");
+
+function enableAudioOnce() {
+  audio.play().catch(()=>{ /* ignore */ });
+  window.removeEventListener("click", enableAudioOnce);
+  window.removeEventListener("keydown", enableAudioOnce);
+  window.removeEventListener("touchstart", enableAudioOnce);
+}
+window.addEventListener("click", enableAudioOnce, { once: true });
+window.addEventListener("keydown", enableAudioOnce, { once: true });
+window.addEventListener("touchstart", enableAudioOnce, { once: true });
+
 
     // Create animated stars background
     function createStars() {
@@ -517,4 +529,5 @@
 </body>
 
 </html>
+
 
