@@ -303,6 +303,8 @@
 <body>
   <div class="stars"></div>
   <canvas id="matrix"></canvas>
+  <audio id="birthdayMusic" src="music.mp3" autoplay hidden></audio>
+
   
   <div id="countdown" class="countdown-container"></div>
   
@@ -321,6 +323,9 @@
   <canvas id="confetti"></canvas>
   
   <script>
+    // Play music
+    document.getElementById("birthdayMusic").play();
+
     // Create animated stars background
     function createStars() {
       const starsContainer = document.querySelector('.stars');
@@ -510,4 +515,5 @@
     });
   </script>
 </body>
+
 </html>
